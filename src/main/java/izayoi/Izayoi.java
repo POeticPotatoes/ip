@@ -13,23 +13,30 @@ public class Izayoi {
 	/**
 	 * Main class for the program
 	 * 
-	 * @param command line arguments provided to the program
+	 * @param args command line arguments provided to the program
 	 */
     public static void main(String[] args) {
     	TaskManager manager = new TaskManager();
     	logLine();
     	logString(" Hello! I'm Sakuya Izayoi\n What can I do for you?");
-    	String command = getInput();
 
-    	while (!command.equals("bye")) {
-    		switch(command) {
-    		case "list":
+    	InputManager input = new InputManager(getInput());
+
+    	while (!input.getCommandType().equals(CommandType.EXIT)) {
+    		switch(input.getCommandType()) {
+    		case MARK:
+    			logString(manager.markTask(input.getIndex()));
+    			break;
+    		case UNMARK:
+    			logString(manager.unmarkTask(input.getIndex()));
+    			break;
+    		case LIST:
     			logString(manager.toString());
     			break;
     		default:
-    			logString(manager.addTask(command));
+    			logString(manager.addTask(new Task(input.getRaw())));
     		}
-    		command = getInput();
+    		input = new InputManager(getInput());
     	}
     	logString(" Hmph. About time you stopped talking... Do come again.");
     }
