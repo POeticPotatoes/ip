@@ -4,6 +4,7 @@
 /*.iml
 .classpath
 .project
+text-ui-test/ACTUAL.TXT
 
 # Gradle build files
 /.gradle/

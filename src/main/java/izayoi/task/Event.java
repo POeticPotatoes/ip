@@ -1,6 +1,7 @@
 package izayoi.task;
 
 import izayoi.InputManager;
+import izayoi.IzayoiException;
 
 /**
  * Represents a task with a start and end time
@@ -12,8 +13,9 @@ public class Event extends Task {
 	 * Initializes a new uncompleted Event task
 	 * 
 	 * @param input the InputManager reading the task description
+	 * @throws IzayoiException if the input is invalid 
 	 */
-	public Event(InputManager input) {
+	public Event(InputManager input) throws IzayoiException {
 		super(input);
 		this.start = super.getArgument("from");
 		this.end = super.getArgument("to");

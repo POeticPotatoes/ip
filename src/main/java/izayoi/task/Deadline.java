@@ -1,6 +1,7 @@
 package izayoi.task;
 
 import izayoi.InputManager;
+import izayoi.IzayoiException;
 
 /**
  * Represents a Task with a deadline
@@ -12,8 +13,9 @@ public class Deadline extends Task {
 	 * Initializes a new uncompleted Deadline task
 	 * 
 	 * @param input the InputManager reading the task description
+	 * @throws IzayoiException if the input is invalid 
 	 */
-	public Deadline(InputManager input) {
+	public Deadline(InputManager input) throws IzayoiException {
 		super(input);
 		this.deadline = super.getArgument("by");
 	}

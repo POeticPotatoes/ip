@@ -3,6 +3,7 @@ package izayoi.task;
 import java.util.Map;
 
 import izayoi.InputManager;
+import izayoi.IzayoiException;
 
 /**
  * Represents a task to be completed by the user
@@ -16,10 +17,14 @@ public abstract class Task {
 	 * Initializes a new uncompleted task
 	 * 
 	 * @param input the InputManager reading the task description
+	 * @throws IzayoiException if the input is invalid 
 	 */
-	public Task(InputManager input) {
+	public Task(InputManager input) throws IzayoiException {
 		this.arguments = input.getTask();
 		this.message = arguments.get("message");
+		if (this.message.trim().isBlank()) {
+			throw new IzayoiException("Did you forget to tell me the task you wanted to do?");
+		}
 	}
 	
 	/**
@@ -45,6 +50,32 @@ public abstract class Task {
 	protected String getArgument(String name) {
 		String m = arguments.get(name);
 		return m == null ? "unspecified": m;
+	}
+	
+	/**
+	 * Factory method to create tasks based on specified type
+	 * 
+	 * @param input the InputManager reading the task description
+	 * @return the created task
+	 * @throws IzayoiException if the task creation fails
+	 */
+	public static Task createTask(InputManager input) throws IzayoiException {
+		Task t;
+		switch (input.getCommandType()) {
+		case TODO:
+			t = new ToDo(input);
+			break;
+		case DEADLINE:
+			t = new Deadline(input);
+			break;
+		case EVENT:
+			t = new Event(input);
+			break;
+		default:
+			throw new IzayoiException("Completely incoherent task description.");
+		}
+		
+		return t;
 	}
 	
 	/**
