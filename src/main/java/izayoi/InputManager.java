@@ -76,6 +76,8 @@ public class InputManager {
 			return CommandType.DEADLINE;
 		case "event":
 			return CommandType.EVENT;
+		case "delete":
+			return CommandType.DELETE;
 		default:
 			return CommandType.UNKNOWN;
 		}

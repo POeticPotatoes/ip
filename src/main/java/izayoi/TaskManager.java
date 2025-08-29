@@ -54,6 +54,15 @@ public class TaskManager {
 		return "Understood. I'll take note of your incompetence:\n" + t;
 	}
 	
+	public String deleteTask(int index) {
+		if (index < 1 || index > this.tasks.size()) {
+			return "How could you be asking me to delete something that doesn't exist??";
+		}
+		Task t = tasks.get(index-1);
+		tasks.remove(index-1);
+		return "Understood. The following task has been eliminated:\n" + t;
+	}
+	
 	@Override
 	public String toString() {
 		String result = "Here you go, your list of tasks:\n";

@@ -35,6 +35,9 @@ public class Izayoi {
     		case LIST:
     			logString(manager.toString());
     			break;
+    		case DELETE:
+    			logString(manager.deleteTask(input.getIndex()));
+    			break;
     		case TODO, EVENT, DEADLINE:
     			try {
     				logString(manager.addTask(Task.createTask(input)));
