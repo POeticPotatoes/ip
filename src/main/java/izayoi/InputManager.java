@@ -1,12 +1,12 @@
 package izayoi;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Handles the string input of a user and extracts suitable arguments
  */
 public class InputManager {
-	private final String raw;
 	private final String[] input;
 	
 	/**
@@ -15,12 +15,31 @@ public class InputManager {
 	 * @param input the string to be parsed
 	 */
 	public InputManager(String input) {
-		this.raw = input;
 		this.input = input.split("[ ]+");
 	}
 	
-	public String getRaw() {
-		return this.raw;
+	/**
+	 * Attempts to read the input as a task description, returning any arguments
+	 * 
+	 * @return a map of argument names and their values. The task description is mapped to "message"
+	 */
+	public Map<String, String> getTask() {
+		HashMap<String, String> result = new HashMap<>();
+		String context = "message";
+		String arguments = "";
+
+		for (int i = 1; i < input.length; i++) {
+			if (input[i].charAt(0) == '/') {
+				result.put(context, arguments.trim());
+				context = input[i].substring(1);
+				arguments = "";
+				continue;
+			}
+			arguments+= input[i] + " ";
+		}
+		result.put(context, arguments);
+
+		return result;
 	}
 	
 	/**
@@ -51,6 +70,12 @@ public class InputManager {
 			return CommandType.MARK;
 		case "unmark":
 			return CommandType.UNMARK;
+		case "todo":
+			return CommandType.TODO;
+		case "deadline":
+			return CommandType.DEADLINE;
+		case "event":
+			return CommandType.EVENT;
 		default:
 			return CommandType.UNKNOWN;
 		}

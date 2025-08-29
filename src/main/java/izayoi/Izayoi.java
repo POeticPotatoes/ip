@@ -2,6 +2,10 @@ package izayoi;
 
 import java.util.Scanner;
 
+import izayoi.task.Deadline;
+import izayoi.task.Event;
+import izayoi.task.ToDo;
+
 /**
  * Main class for handling user input and output
  * 
@@ -33,8 +37,17 @@ public class Izayoi {
     		case LIST:
     			logString(manager.toString());
     			break;
+    		case TODO:
+    			logString(manager.addTask(new ToDo(input)));
+    			break;
+    		case DEADLINE:
+    			logString(manager.addTask(new Deadline(input)));
+    			break;
+    		case EVENT:
+    			logString(manager.addTask(new Event(input)));
+    			break;
     		default:
-    			logString(manager.addTask(new Task(input.getRaw())));
+    			logString("I don't understand that command. Have you forgotten how to speak english?");
     		}
     		input = new InputManager(getInput());
     	}

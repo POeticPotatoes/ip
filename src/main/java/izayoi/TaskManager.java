@@ -3,6 +3,8 @@ package izayoi;
 import java.util.ArrayList;
 import java.util.List;
 
+import izayoi.task.Task;
+
 /**
  * Manages tasks for the program
  * 
@@ -18,7 +20,8 @@ public class TaskManager {
 	 */
 	public String addTask(Task task) {
 		this.tasks.add(task);
-		return "added: " + task;
+		return String.format("Ok, I've added the task:\n%s\nYou'll have %s tasks now.", 
+					task, tasks.size());
 	}
 	
 	/**
@@ -53,7 +56,7 @@ public class TaskManager {
 	
 	@Override
 	public String toString() {
-		String result = "";
+		String result = "Here you go, your list of tasks:\n";
 		for (int i = 1; i <= tasks.size(); i++) {
 			result += i + ". " + tasks.get(i-1);
 			if (i < tasks.size()) {
