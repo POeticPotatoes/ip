@@ -1,16 +1,19 @@
 package main.java.izayoi.task;
 
-import java.util.Map;
-
 import main.java.izayoi.Commandifiable;
 import main.java.izayoi.InputReader;
 import main.java.izayoi.IzayoiException;
+
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Map;
 
 
 /**
  * Represents a task to be completed by the user
  */
 public abstract class Task implements Commandifiable {
+    public static final DateTimeFormatter DATETIME_FORMAT = DateTimeFormatter.ofPattern("MMM d yyyy");
     private boolean isCompleted = false;
     private final Map<String, String> arguments;
     private final String message;
@@ -59,7 +62,7 @@ public abstract class Task implements Commandifiable {
      */
     protected String getArgument(String name) {
         String m = arguments.get(name);
-        return m == null ? "unspecified" : m;
+        return m == null ? "unspecified" : m.trim();
     }
 
     /**
@@ -70,12 +73,16 @@ public abstract class Task implements Commandifiable {
      * @throws IzayoiException if the task creation fails
      */
     public static Task createTask(InputReader input) throws IzayoiException {
-        return switch (input.getCommandType()) {
-        case TODO -> new ToDo(input);
-        case DEADLINE -> new Deadline(input);
-        case EVENT -> new Event(input);
-        default -> throw new IzayoiException("Completely incoherent task description.");
-        };
+        try {
+            return switch (input.getCommandType()) {
+            case TODO -> new ToDo(input);
+            case DEADLINE -> new Deadline(input);
+            case EVENT -> new Event(input);
+            default -> throw new IzayoiException("Completely incoherent task description.");
+            };
+        } catch (DateTimeParseException e) {
+            throw new IzayoiException("Incomprehensible date description.");
+        }
     }
 
     /**

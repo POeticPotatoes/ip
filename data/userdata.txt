@@ -1,3 +1,5 @@
-deadline yippee /by tomorrow 
+todo thing 
 mark 1
-event thing /from now /to forever 
+event thing /from 2019-12-01 /to 2019-12-02
+deadline hehehaha /by 2020-10-10
+mark 3

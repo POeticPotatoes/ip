@@ -1,5 +1,6 @@
 package main.java.izayoi.task;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import main.java.izayoi.InputReader;
@@ -9,7 +10,7 @@ import main.java.izayoi.IzayoiException;
  * Represents a Task with a deadline
  */
 public class Deadline extends Task {
-    private final String deadline;
+    private final LocalDate deadline;
 
     /**
      * Initializes a new uncompleted Deadline task
@@ -18,7 +19,7 @@ public class Deadline extends Task {
      */
     public Deadline(InputReader input) throws IzayoiException {
         super(input);
-        this.deadline = super.getArgument("by");
+        this.deadline = LocalDate.parse(super.getArgument("by"));
     }
 
     @Override
@@ -28,7 +29,7 @@ public class Deadline extends Task {
 
     @Override
     public String toString() {
-        return String.format("%s (by: %s)", super.toString(), deadline);
+        return String.format("%s (by: %s)", super.toString(), deadline.format(DATETIME_FORMAT));
     }
 
     @Override
