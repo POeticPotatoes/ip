@@ -3,8 +3,6 @@ package izayoi.input;
 import java.util.HashMap;
 import java.util.Map;
 
-import izayoi.CommandType;
-
 /**
  * Handles the string input of a user and extracts suitable arguments
  */
@@ -64,6 +62,7 @@ public class InputReader implements TaskDescriptor {
             return CommandType.EMPTY;
         }
         return switch (input[0]) {
+        case "find" -> CommandType.SEARCH;
         case "list" -> CommandType.LIST;
         case "bye" -> CommandType.EXIT;
         case "mark" -> CommandType.MARK;

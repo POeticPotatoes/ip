@@ -3,6 +3,7 @@ package izayoi;
 import java.util.ArrayList;
 import java.util.List;
 
+import izayoi.input.InputReader;
 import izayoi.task.Actionable;
 
 /**
@@ -64,6 +65,36 @@ public class TaskManager implements Commandifiable {
         return "Understood. The following task has been eliminated:\n" + t;
     }
 
+    /**
+     * Finds all tasks with descriptions that match the provided query
+     * @param input the InputReader holding the search query
+     * @return a formatted string listing all matching tasks and their indexes
+     */
+    public String findTask(InputReader input) {
+        String query = input.getTask().get("message");
+        List<Actionable> result = new ArrayList<>();
+        for (Actionable a: tasks) {
+            if (a.toString().contains(query)) {
+                result.add(a);
+            }
+        }
+        return "This is all I could find:\n" + listTasks(result);
+    }
+
+
+    /**
+     * Returns an indexed list of tasks as a printable String
+     * @param t the tasks to be listed
+     * @return the formatted string
+     */
+    private String listTasks(List<Actionable> t) {
+        String result = "";
+        for (Actionable a: t) {
+            result += String.format("%s. %s\n", tasks.indexOf(a) + 1, a);
+        }
+        return result.trim();
+    }
+
     @Override
     public List<String> commandify() {
         List<String> result = new ArrayList<>();
@@ -79,13 +110,6 @@ public class TaskManager implements Commandifiable {
 
     @Override
     public String toString() {
-        String result = "Here you go, your list of tasks:\n";
-        for (int i = 1; i <= tasks.size(); i++) {
-            result += i + ". " + tasks.get(i - 1);
-            if (i < tasks.size()) {
-                result += "\n";
-            }
-        }
-        return result;
+        return "Here you go, your list of tasks:\n" + listTasks(tasks);
     }
 }
