@@ -3,7 +3,7 @@ package izayoi.task;
 import java.time.LocalDate;
 import java.util.List;
 
-import izayoi.InputReader;
+import izayoi.input.InputReader;
 import izayoi.IzayoiException;
 
 /**

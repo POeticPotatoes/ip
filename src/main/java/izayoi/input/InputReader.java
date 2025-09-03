@@ -1,16 +1,18 @@
-package izayoi;
+package izayoi.input;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import izayoi.CommandType;
+
 /**
  * Handles the string input of a user and extracts suitable arguments
  */
-public class InputReader {
+public class InputReader implements TaskDescriptor {
     private final String[] input;
 
     /**
-     * Initalizes a new InputReader for the provided String
+     * Initializes a new InputReader for the provided String
      * @param input the string to be parsed
      */
     public InputReader(String input) {
@@ -21,6 +23,7 @@ public class InputReader {
      * Attempts to read the input as a task description, returning any arguments
      * @return a map of argument names and their values. The task description is mapped to "message"
      */
+    @Override
     public Map<String, String> getTask() {
         HashMap<String, String> result = new HashMap<>();
         String context = "message";

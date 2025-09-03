@@ -3,8 +3,8 @@ package izayoi.task;
 import java.time.LocalDate;
 import java.util.List;
 
-import izayoi.InputReader;
 import izayoi.IzayoiException;
+import izayoi.input.TaskDescriptor;
 
 /**
  * Represents a task with a start and end time
@@ -18,7 +18,7 @@ public class Event extends Task {
      * @param input the InputManager reading the task description
      * @throws IzayoiException if the input is invalid
      */
-    public Event(InputReader input) throws IzayoiException {
+    public Event(TaskDescriptor input) throws IzayoiException {
         super(input);
         this.start = LocalDate.parse(super.getArgument("from"));
         this.end = LocalDate.parse(super.getArgument("to"));

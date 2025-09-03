@@ -1,6 +1,6 @@
 package izayoi.task;
 
-import izayoi.InputReader;
+import izayoi.input.InputReader;
 import izayoi.IzayoiException;
 
 import java.util.List;

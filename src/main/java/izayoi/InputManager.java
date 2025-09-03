@@ -3,6 +3,7 @@ package izayoi;
 import java.util.List;
 import java.util.Scanner;
 
+import izayoi.input.InputReader;
 import izayoi.logger.Logger;
 import izayoi.task.Task;
 
@@ -45,7 +46,7 @@ public class InputManager {
      * @return whether the command is an exit command
      */
     private boolean handleLine(String s) {
-        InputReader input = new izayoi.InputReader(s);
+        InputReader input = new InputReader(s);
 
         if (input.getCommandType().equals(CommandType.EXIT)) {
             return false;

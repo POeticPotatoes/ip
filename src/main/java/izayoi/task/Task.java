@@ -1,18 +1,18 @@
 package izayoi.task;
 
-import izayoi.Commandifiable;
-import izayoi.InputReader;
-import izayoi.IzayoiException;
-
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Map;
 
+import izayoi.Commandifiable;
+import izayoi.IzayoiException;
+import izayoi.input.InputReader;
+import izayoi.input.TaskDescriptor;
 
 /**
  * Represents a task to be completed by the user
  */
-public abstract class Task implements Commandifiable {
+public abstract class Task implements Commandifiable, Actionable {
     public static final DateTimeFormatter DATETIME_FORMAT = DateTimeFormatter.ofPattern("MMM d yyyy");
     private boolean isCompleted = false;
     private final Map<String, String> arguments;
@@ -24,7 +24,7 @@ public abstract class Task implements Commandifiable {
      * @param input the InputManager reading the task description
      * @throws IzayoiException if the input is invalid
      */
-    public Task(InputReader input) throws IzayoiException {
+    public Task(TaskDescriptor input) throws IzayoiException {
         this.arguments = input.getTask();
         this.message = arguments.get("message");
         if (this.message.trim().isBlank()) {
@@ -32,6 +32,7 @@ public abstract class Task implements Commandifiable {
         }
     }
 
+    @Override
     public boolean isCompleted() {
         return this.isCompleted;
     }
@@ -40,16 +41,12 @@ public abstract class Task implements Commandifiable {
         return this.message;
     }
 
-    /**
-     * Marks this task as done
-     */
+    @Override
     public void markAsDone() {
         this.isCompleted = true;
     }
 
-    /**
-     * Marks this task as not done
-     */
+    @Override
     public void markAsNotDone() {
         this.isCompleted = false;
     }
