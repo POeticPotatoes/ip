@@ -25,7 +25,7 @@ public class Izayoi {
 
         try {
             im.readLines(fm.readFile());
-        } catch (FileNotFoundException e) {
+        } catch (Exception e) {
             System.out.println("Could not read save file.");
             System.out.println(e.getMessage());
         }

@@ -1,5 +1,6 @@
 package main.java.izayoi.task;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import main.java.izayoi.InputReader;
@@ -9,8 +10,8 @@ import main.java.izayoi.IzayoiException;
  * Represents a task with a start and end time
  */
 public class Event extends Task {
-    private final String start;
-    private final String end;
+    private final LocalDate start;
+    private final LocalDate end;
 
     /**
      * Initializes a new uncompleted Event task
@@ -19,8 +20,8 @@ public class Event extends Task {
      */
     public Event(InputReader input) throws IzayoiException {
         super(input);
-        this.start = super.getArgument("from");
-        this.end = super.getArgument("to");
+        this.start = LocalDate.parse(super.getArgument("from"));
+        this.end = LocalDate.parse(super.getArgument("to"));
     }
 
     @Override
@@ -30,11 +31,13 @@ public class Event extends Task {
 
     @Override
     public String toString() {
-        return String.format("%s (from: %s to: %s)", super.toString(), start, end);
+        return String.format("%s (from: %s to: %s)", super.toString(),
+                start.format(DATETIME_FORMAT), end.format(DATETIME_FORMAT));
     }
 
     @Override
     public List<String> commandify() {
-        return List.of(String.format("event %s /from %s /to %s", getMessage(), start, end));
+        return List.of(String.format("event %s /from %s /to %s", getMessage(),
+                start, end));
     }
 }
