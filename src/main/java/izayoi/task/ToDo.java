@@ -1,6 +1,6 @@
 package main.java.izayoi.task;
 
-import main.java.izayoi.InputManager;
+import main.java.izayoi.InputReader;
 import main.java.izayoi.IzayoiException;
 
 /**
@@ -13,7 +13,7 @@ public class ToDo extends Task {
      * @param input the InputManager reading the task description
      * @throws IzayoiException if the input is invalid
      */
-    public ToDo(InputManager input) throws IzayoiException {
+    public ToDo(InputReader input) throws IzayoiException {
         super(input);
     }
 

@@ -1,8 +1,9 @@
 package main.java.izayoi.task;
 
+import java.util.List;
 import java.util.Map;
 
-import main.java.izayoi.InputManager;
+import main.java.izayoi.InputReader;
 import main.java.izayoi.IzayoiException;
 
 
@@ -20,7 +21,7 @@ public abstract class Task {
      * @param input the InputManager reading the task description
      * @throws IzayoiException if the input is invalid
      */
-    public Task(InputManager input) throws IzayoiException {
+    public Task(InputReader input) throws IzayoiException {
         this.arguments = input.getTask();
         this.message = arguments.get("message");
         if (this.message.trim().isBlank()) {
@@ -60,7 +61,7 @@ public abstract class Task {
      * @return the created task
      * @throws IzayoiException if the task creation fails
      */
-    public static Task createTask(InputManager input) throws IzayoiException {
+    public static Task createTask(InputReader input) throws IzayoiException {
         return switch (input.getCommandType()) {
         case TODO -> new ToDo(input);
         case DEADLINE -> new Deadline(input);
@@ -74,6 +75,12 @@ public abstract class Task {
      * @return a single letter representing the type of task
      */
     public abstract String getType();
+
+    /**
+     * Returns a list of strings required to recreate the same task from user commands
+     * @return a list of commands that, when entered, creates the same task in its current state
+     */
+    // public abstract List<String> commandify();
 
     @Override
     public String toString() {
