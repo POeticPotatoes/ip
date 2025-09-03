@@ -3,6 +3,7 @@ package izayoi;
 import java.util.List;
 import java.util.Scanner;
 
+import izayoi.input.CommandType;
 import izayoi.input.InputReader;
 import izayoi.logger.Logger;
 import izayoi.task.Task;
@@ -71,6 +72,9 @@ public class InputManager {
             } catch (IzayoiException e) {
                 logString(e.getMessage() + "\nYour insolence has been noted.");
             }
+            break;
+        case SEARCH:
+            logString(manager.findTask(input));
             break;
         case EMPTY:
             break;
