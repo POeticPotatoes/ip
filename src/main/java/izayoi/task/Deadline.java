@@ -1,5 +1,7 @@
 package main.java.izayoi.task;
 
+import java.util.List;
+
 import main.java.izayoi.InputReader;
 import main.java.izayoi.IzayoiException;
 
@@ -27,5 +29,10 @@ public class Deadline extends Task {
     @Override
     public String toString() {
         return String.format("%s (by: %s)", super.toString(), deadline);
+    }
+
+    @Override
+    public List<String> commandify() {
+        return List.of(String.format("deadline %s /by %s", getMessage(), deadline));
     }
 }

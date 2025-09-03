@@ -1,8 +1,8 @@
 package main.java.izayoi.task;
 
-import java.util.List;
 import java.util.Map;
 
+import main.java.izayoi.Commandifiable;
 import main.java.izayoi.InputReader;
 import main.java.izayoi.IzayoiException;
 
@@ -10,7 +10,7 @@ import main.java.izayoi.IzayoiException;
 /**
  * Represents a task to be completed by the user
  */
-public abstract class Task {
+public abstract class Task implements Commandifiable {
     private boolean isCompleted = false;
     private final Map<String, String> arguments;
     private final String message;
@@ -27,6 +27,14 @@ public abstract class Task {
         if (this.message.trim().isBlank()) {
             throw new IzayoiException("Did you forget to tell me the task you wanted to do?");
         }
+    }
+
+    public boolean isCompleted() {
+        return this.isCompleted;
+    }
+
+    public String getMessage() {
+        return this.message;
     }
 
     /**
@@ -75,12 +83,6 @@ public abstract class Task {
      * @return a single letter representing the type of task
      */
     public abstract String getType();
-
-    /**
-     * Returns a list of strings required to recreate the same task from user commands
-     * @return a list of commands that, when entered, creates the same task in its current state
-     */
-    // public abstract List<String> commandify();
 
     @Override
     public String toString() {

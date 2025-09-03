@@ -1,5 +1,7 @@
 package main.java.izayoi.task;
 
+import java.util.List;
+
 import main.java.izayoi.InputReader;
 import main.java.izayoi.IzayoiException;
 
@@ -29,5 +31,10 @@ public class Event extends Task {
     @Override
     public String toString() {
         return String.format("%s (from: %s to: %s)", super.toString(), start, end);
+    }
+
+    @Override
+    public List<String> commandify() {
+        return List.of(String.format("event %s /from %s /to %s", getMessage(), start, end));
     }
 }

@@ -9,7 +9,7 @@ import main.java.izayoi.task.Task;
  * Manages tasks for the program
  * @author POeticPotatoes
  */
-public class TaskManager {
+public class TaskManager implements Commandifiable {
     private final List<Task> tasks = new ArrayList<>();
 
     /**
@@ -62,6 +62,19 @@ public class TaskManager {
         Task t = tasks.get(index - 1);
         tasks.remove(index - 1);
         return "Understood. The following task has been eliminated:\n" + t;
+    }
+
+    @Override
+    public List<String> commandify() {
+        List<String> result = new ArrayList<>();
+        for (int i = 1; i <= tasks.size(); i++) {
+            Task t = tasks.get(i - 1);
+            result.addAll(t.commandify());
+            if (t.isCompleted()) {
+                result.add("mark " + i);
+            }
+        }
+        return result;
     }
 
     @Override

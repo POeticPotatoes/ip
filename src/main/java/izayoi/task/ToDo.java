@@ -3,6 +3,8 @@ package main.java.izayoi.task;
 import main.java.izayoi.InputReader;
 import main.java.izayoi.IzayoiException;
 
+import java.util.List;
+
 /**
  * Represents a Task with no deadline or duration
  */
@@ -20,5 +22,10 @@ public class ToDo extends Task {
     @Override
     public String getType() {
         return "T";
+    }
+
+    @Override
+    public List<String> commandify() {
+        return List.of(String.format("todo %s", getMessage()));
     }
 }
