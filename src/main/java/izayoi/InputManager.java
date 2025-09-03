@@ -1,10 +1,10 @@
-package main.java.izayoi;
+package izayoi;
 
 import java.util.List;
 import java.util.Scanner;
 
-import main.java.izayoi.logger.Logger;
-import main.java.izayoi.task.Task;
+import izayoi.logger.Logger;
+import izayoi.task.Task;
 
 /**
  * Handles the inputs during a user session and applies their arguments
@@ -45,7 +45,7 @@ public class InputManager {
      * @return whether the command is an exit command
      */
     private boolean handleLine(String s) {
-        InputReader input = new InputReader(s);
+        InputReader input = new izayoi.InputReader(s);
 
         if (input.getCommandType().equals(CommandType.EXIT)) {
             return false;

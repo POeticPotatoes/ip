@@ -28,7 +28,7 @@ test {
 }
 
 application {
-    mainClass.set("main.java.izayoi.Izayoi")
+    mainClass.set("izayoi.Izayoi")
 }
 
 shadowJar {

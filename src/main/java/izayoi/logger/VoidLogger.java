@@ -1,4 +1,4 @@
-package main.java.izayoi.logger;
+package izayoi.logger;
 
 /**
  * Represents a logger that outputs to nowhere

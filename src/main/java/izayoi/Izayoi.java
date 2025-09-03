@@ -1,12 +1,11 @@
-package main.java.izayoi;
+package izayoi;
 
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 
-import main.java.izayoi.file.FileManager;
-import main.java.izayoi.logger.CliLogger;
-import main.java.izayoi.logger.VoidLogger;
+import izayoi.file.FileManager;
+import izayoi.logger.CliLogger;
+import izayoi.logger.VoidLogger;
 
 /**
  * Main class for handling user input and output

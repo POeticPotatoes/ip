@@ -1,4 +1,4 @@
-package main.java.izayoi;
+package izayoi;
 
 /**
  * Represents the various command types a user may issue

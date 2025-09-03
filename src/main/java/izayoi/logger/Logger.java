@@ -1,4 +1,4 @@
-package main.java.izayoi.logger;
+package izayoi.logger;
 
 /**
  * Represents an output for any string

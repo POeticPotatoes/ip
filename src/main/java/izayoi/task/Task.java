@@ -1,8 +1,8 @@
-package main.java.izayoi.task;
+package izayoi.task;
 
-import main.java.izayoi.Commandifiable;
-import main.java.izayoi.InputReader;
-import main.java.izayoi.IzayoiException;
+import izayoi.Commandifiable;
+import izayoi.InputReader;
+import izayoi.IzayoiException;
 
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;

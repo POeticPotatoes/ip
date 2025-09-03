@@ -1,4 +1,4 @@
-package main.java.izayoi;
+package izayoi;
 
 /**
  * Represents an exception raised by Izayoi

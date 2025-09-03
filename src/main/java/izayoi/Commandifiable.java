@@ -1,4 +1,4 @@
-package main.java.izayoi;
+package izayoi;
 
 import java.util.List;
 

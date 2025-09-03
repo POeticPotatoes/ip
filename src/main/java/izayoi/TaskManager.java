@@ -1,9 +1,9 @@
-package main.java.izayoi;
+package izayoi;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import main.java.izayoi.task.Task;
+import izayoi.task.Task;
 
 /**
  * Manages tasks for the program

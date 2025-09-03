@@ -1,4 +1,4 @@
-package main.java.izayoi.logger;
+package izayoi.logger;
 
 /**
  * Represents a logger for the interactive command line a user will be using

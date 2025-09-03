@@ -1,10 +1,10 @@
-package main.java.izayoi.task;
+package izayoi.task;
 
 import java.time.LocalDate;
 import java.util.List;
 
-import main.java.izayoi.InputReader;
-import main.java.izayoi.IzayoiException;
+import izayoi.InputReader;
+import izayoi.IzayoiException;
 
 /**
  * Represents a task with a start and end time

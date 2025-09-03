@@ -1,7 +1,7 @@
-package main.java.izayoi.task;
+package izayoi.task;
 
-import main.java.izayoi.InputReader;
-import main.java.izayoi.IzayoiException;
+import izayoi.InputReader;
+import izayoi.IzayoiException;
 
 import java.util.List;
 

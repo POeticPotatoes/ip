@@ -1,4 +1,4 @@
-package main.java.izayoi.file;
+package izayoi.file;
 
 import java.io.BufferedWriter;
 import java.io.File;
