@@ -9,6 +9,7 @@ text-ui-test/ACTUAL.TXT
 # Gradle build files
 /.gradle/
 /build/
+/classes/
 src/main/resources/docs/
 
 # MacOS custom attributes files created by Finder
