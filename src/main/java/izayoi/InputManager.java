@@ -30,8 +30,14 @@ public class InputManager {
      * Greets the user
      */
     public void hello() {
-        logLine();
         logString(" Hello! I'm Sakuya Izayoi\n What can I do for you?");
+    }
+
+    /**
+     * Refuses the user
+     */
+    public void refuse() {
+        logString("I'm already done with you. Go home.");
     }
 
     /**
@@ -46,7 +52,7 @@ public class InputManager {
      * @param s the String to be read as a command
      * @return whether the command is an exit command
      */
-    private boolean handleLine(String s) {
+    public boolean handleLine(String s) {
         InputReader input = new InputReader(s);
 
         if (input.getCommandType().equals(CommandType.EXIT)) {
@@ -85,13 +91,15 @@ public class InputManager {
     }
 
     /**
-     * Reads the next line from user input and handles it appropriately
+     * Reads the next line from std input and handles it appropriately
      * @return whether the user entered an exit command
      */
     public boolean nextLine() {
         String s = SCANNER.nextLine();
         logLine();
-        return handleLine(s);
+        boolean result = handleLine(s);
+        logLine();
+        return result;
     }
 
     /**
@@ -111,28 +119,17 @@ public class InputManager {
     }
 
     /**
-     * Gets user input
-     * @returns The user's input
-     */
-    private String getInput() {
-        String s = SCANNER.nextLine();
-        logLine();
-        return s;
-    }
-
-    /**
      * Logs a String to the output
      * @param s the String to be logged
      */
     private void logString(String s) {
         this.logger.log(s);
-        logLine();
     }
 
     /**
      * Logs a line break to the output
      */
-    private void logLine() {
+    public void logLine() {
         this.logger.log("____________________________________________________________");
     }
 }
