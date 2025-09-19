@@ -27,7 +27,7 @@ public abstract class Task implements Commandifiable, Actionable {
     public Task(TaskDescriptor input) throws IzayoiException {
         this.arguments = input.getTask();
         this.message = arguments.get("message");
-        if (this.message.trim().isBlank()) {
+        if (this.message.isBlank()) {
             throw new IzayoiException("Did you forget to tell me the task you wanted to do?");
         }
     }
