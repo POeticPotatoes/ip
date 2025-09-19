@@ -1,4 +1,4 @@
-package izayoi;
+package izayoi.exception;
 
 /**
  * Represents an exception raised by Izayoi

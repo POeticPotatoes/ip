@@ -1,6 +1,5 @@
 package izayoi.task;
 
-import izayoi.IzayoiException;
 import izayoi.input.TaskDescriptor;
 import org.junit.jupiter.api.Test;
 
