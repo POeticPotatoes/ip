@@ -3,6 +3,7 @@ package izayoi;
 import java.util.List;
 import java.util.Scanner;
 
+import izayoi.exception.IzayoiException;
 import izayoi.input.CommandType;
 import izayoi.input.InputReader;
 import izayoi.logger.Logger;

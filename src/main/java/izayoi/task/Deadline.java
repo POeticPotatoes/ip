@@ -4,7 +4,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 import izayoi.input.InputReader;
-import izayoi.IzayoiException;
+import izayoi.exception.IzayoiException;
 
 /**
  * Represents a Task with a deadline

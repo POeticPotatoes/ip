@@ -58,9 +58,6 @@ public class InputReader implements TaskDescriptor {
      * @return the type of command issued in the String
      */
     public CommandType getCommandType() {
-        if (input.length == 0) {
-            return CommandType.EMPTY;
-        }
         return switch (input[0]) {
         case "find" -> CommandType.SEARCH;
         case "list" -> CommandType.LIST;

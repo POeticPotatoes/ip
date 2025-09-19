@@ -1,7 +1,7 @@
 package izayoi.task;
 
 import izayoi.input.InputReader;
-import izayoi.IzayoiException;
+import izayoi.exception.IzayoiException;
 
 import java.util.List;
 
