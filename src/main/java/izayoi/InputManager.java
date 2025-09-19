@@ -72,7 +72,7 @@ public class InputManager {
         case DELETE:
             logString(manager.deleteTask(input.getIndex()));
             break;
-        case TODO, EVENT, DEADLINE:
+        case TODO, EVENT, DEADLINE, TIMED:
             try {
                 logString(manager.addTask(Task.createTask(input)));
             } catch (IzayoiException e) {

@@ -70,6 +70,7 @@ public class InputReader implements TaskDescriptor {
         case "todo" -> CommandType.TODO;
         case "deadline" -> CommandType.DEADLINE;
         case "event" -> CommandType.EVENT;
+        case "timed" -> CommandType.TIMED;
         case "delete" -> CommandType.DELETE;
         default -> CommandType.UNKNOWN;
         };

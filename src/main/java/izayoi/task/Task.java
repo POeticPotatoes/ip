@@ -75,6 +75,7 @@ public abstract class Task implements Commandifiable, Actionable {
             case TODO -> new ToDo(input);
             case DEADLINE -> new Deadline(input);
             case EVENT -> new Event(input);
+            case TIMED -> new Timed(input);
             default -> throw new IzayoiException("Completely incoherent task description.");
             };
         } catch (DateTimeParseException e) {
