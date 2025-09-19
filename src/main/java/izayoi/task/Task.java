@@ -5,7 +5,9 @@ import java.time.format.DateTimeParseException;
 import java.util.Map;
 
 import izayoi.Commandifiable;
-import izayoi.IzayoiException;
+import izayoi.exception.EmptyArgumentException;
+import izayoi.exception.InvalidFormatException;
+import izayoi.exception.IzayoiException;
 import izayoi.input.InputReader;
 import izayoi.input.TaskDescriptor;
 
@@ -27,8 +29,8 @@ public abstract class Task implements Commandifiable, Actionable {
     public Task(TaskDescriptor input) throws IzayoiException {
         this.arguments = input.getTask();
         this.message = arguments.get("message");
-        if (this.message.isBlank()) {
-            throw new IzayoiException("Did you forget to tell me the task you wanted to do?");
+        if (this.message.trim().isBlank()) {
+            throw new EmptyArgumentException("Did you forget to tell me the task you wanted to do?");
         }
     }
 
@@ -75,10 +77,10 @@ public abstract class Task implements Commandifiable, Actionable {
             case TODO -> new ToDo(input);
             case DEADLINE -> new Deadline(input);
             case EVENT -> new Event(input);
-            default -> throw new IzayoiException("Completely incoherent task description.");
+            default -> throw new InvalidFormatException("Completely incoherent task description.");
             };
         } catch (DateTimeParseException e) {
-            throw new IzayoiException("Incomprehensible date description.");
+            throw new InvalidFormatException("Incomprehensible date description.");
         }
     }
 
