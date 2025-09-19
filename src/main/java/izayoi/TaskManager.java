@@ -33,6 +33,7 @@ public class TaskManager implements Commandifiable {
             return "Provided index was out of bounds. Is there something wrong with your head?";
         }
         Actionable t = tasks.get(index - 1);
+        assert(t != null);
         t.markAsDone();
         return "Understood, the following task was executed:\n" + t;
     }
@@ -47,6 +48,7 @@ public class TaskManager implements Commandifiable {
             return "Provided index was out of bounds. Is there something wrong with your head?";
         }
         Actionable t = tasks.get(index - 1);
+        assert(t != null);
         t.markAsNotDone();
         return "Understood. I'll take note of your incompetence:\n" + t;
     }
@@ -61,6 +63,7 @@ public class TaskManager implements Commandifiable {
             return "How could you be asking me to delete something that doesn't exist??";
         }
         Actionable t = tasks.get(index - 1);
+        assert(t != null);
         tasks.remove(index - 1);
         return "Understood. The following task has been eliminated:\n" + t;
     }
@@ -100,6 +103,7 @@ public class TaskManager implements Commandifiable {
         List<String> result = new ArrayList<>();
         for (int i = 1; i <= tasks.size(); i++) {
             Actionable t = tasks.get(i - 1);
+            assert(t instanceof Commandifiable);
             result.addAll(((Commandifiable) t).commandify());
             if (t.isCompleted()) {
                 result.add("mark " + i);
