@@ -13,6 +13,7 @@ import java.util.Scanner;
  * Manages the reading and writing of a file
  */
 public class FileManager {
+    public static final String SAVE_DIR = "./data";
     public static final String SAVE_FILE = "./data/userdata.txt";
     private final File file;
 
@@ -20,6 +21,10 @@ public class FileManager {
      * Initializes a new FileManager for a specified file
      */
     public FileManager(String filepath) {
+        File saveDir = new File(SAVE_DIR);
+        if (!saveDir.exists()) {
+            saveDir.mkdir();
+        }
         this.file = new File(filepath);
     }
 
