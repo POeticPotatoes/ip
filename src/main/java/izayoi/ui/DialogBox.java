@@ -1,5 +1,7 @@
 package izayoi.ui;
 
+import java.io.IOException;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -10,8 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
-
-import java.io.IOException;
 
 /**
  * Custom DialogBox for chat display
@@ -43,19 +43,19 @@ public class DialogBox extends HBox {
     }
 
     private void flip() {
-        this.setAlignment(Pos.TOP_LEFT);
+        this.setAlignment(Pos.TOP_RIGHT);
         ObservableList<Node> tmp = FXCollections.observableArrayList(this.getChildren());
         FXCollections.reverse(tmp);
         this.getChildren().setAll(tmp);
     }
 
     public static DialogBox getUserDialog(String s, Image i) {
-        return new DialogBox(s, i);
-    }
-
-    public static DialogBox getDukeDialog(String s, Image i) {
         var db = new DialogBox(s, i);
         db.flip();
         return db;
+    }
+
+    public static DialogBox getDukeDialog(String s, Image i) {
+        return new DialogBox(s, i);
     }
 }
