@@ -48,13 +48,17 @@ public class MainWindow extends AnchorPane implements Logger {
     @FXML
     private void handleUserInput() {
         String input = userInput.getText();
-        dialogContainer.getChildren().add(DialogBox.getUserDialog(input, userImage));
+        var dialog = DialogBox.getUserDialog(input, userImage);
+        dialogContainer.getChildren().add(dialog);
+        AnimationUtil.animateMessage(dialog);
         izayoi.runCommand(input);
         userInput.clear();
     }
 
     @Override
     public void log(String s) {
-        dialogContainer.getChildren().add(DialogBox.getDukeDialog(s, izayoiImage));
+        var dialog = DialogBox.getDukeDialog(s, izayoiImage);
+        dialogContainer.getChildren().add(dialog);
+        AnimationUtil.animateMessage(dialog);
     }
 }
